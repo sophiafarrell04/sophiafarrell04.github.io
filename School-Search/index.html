@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebraska School District Search</title>
+    
+    <!-- Meta -->
+    <meta name="description" content="Find your district's chronic absentee rate for Nebraska school districts. Searchable interface with historical data visualization.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Find your district's chronic absentee rate</h1>
+            <p class="subtitle">Search for a Nebraska school district to see chronic absenteeism trends over recent years.</p>
+        </header>
+
+        <section class="search-section">
+            <div class="search-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="district-search" placeholder="Search district name..." autocomplete="off">
+            </div>
+            <div id="search-suggestions" class="suggestions-list hidden"></div>
+        </section>
+
+        <section id="result-section" class="result-section hidden">
+            <div class="district-info">
+                <h2 id="district-name">District Name</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Latest Rate</span>
+                        <span class="value" id="latest-rate">--%</span>
+                        <span class="subtext" id="latest-year">2024-2025</span>
+                    </div>
+                    <!-- Could add more distinct stats here if needed -->
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="absenteeismChart"></canvas>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>School Year</th>
+                        <th>Chronic Absence %</th>
+                    </tr>
+                </thead>
+                <tbody id="data-table-body">
+                    <!-- Data rows inserted here -->
+                </tbody>
+            </table>
+        </section>
+        
+        <footer>
+            <p>Data source: Nebraska Department of Education</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
